@@ -3,19 +3,19 @@ from dash import dcc, html
 from dash.dependencies import Input, Output
 import pandas as pd
 from recommendations import recomendar_por_colaboracao, recomendar_por_conteudo
-from main import rec_df, sim_df  # Importe as matrizes de similaridade
+from main import rec_df, sim_df  
 
-# Carrega os dados dos filmes
+
 filmes = pd.read_csv('ml-latest-small/movies.csv')
-lista_de_filmes = filmes['title'].unique()  # Lista de títulos únicos de filmes
+lista_de_filmes = filmes['title'].unique()  
 
 app = dash.Dash(__name__)
 
-# Estilos CSS personalizados
+
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
-# Layout da aplicação
+
 app.layout = html.Div(
     style={
         'font-family': 'Arial, sans-serif',
@@ -47,7 +47,6 @@ app.layout = html.Div(
             }
         ),
         
-        # Dropdown com autocompletar
         dcc.Dropdown(
             id='filme-dropdown',
             options=[{'label': filme, 'value': filme} for filme in lista_de_filmes],
@@ -103,7 +102,6 @@ app.layout = html.Div(
     ]
 )
 
-# Callback para atualizar as recomendações
 @app.callback(
     Output('resultado', 'children'),
     [Input('botao-recomendar', 'n_clicks')],
@@ -121,7 +119,6 @@ def atualizar_recomendacoes(n_clicks, filme, tipo):
         else:
             recomendacoes = recomendar_por_conteudo(filme, sim_df)
         
-        # Exibe as recomendações como uma lista HTML
         return html.Ul(
             [
                 html.Li(

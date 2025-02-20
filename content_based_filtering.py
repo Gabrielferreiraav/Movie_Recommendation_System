@@ -6,7 +6,6 @@ def filtro_baseado_conteudo(filmes, tags, preferencias=None):
     filmes['movieId'] = filmes['movieId'].astype(str)
     df2 = filmes.merge(tags, on='movieId', how='left')
     
-    # Combina informações relevantes
     df2['Infos'] = df2['genres'].fillna("") + " " + df2['tag'].fillna("")
     
     if preferencias:
