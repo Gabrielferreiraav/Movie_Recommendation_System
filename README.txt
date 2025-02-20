@@ -32,7 +32,7 @@ Este projeto é um sistema de recomendação de filmes que utiliza técnicas de 
 
 1. **Clone o repositório**:
    ```bash
-   git clone https://github.com/seu-usuario/sistema-recomendacao-filmes.git
+   git clone https://github.com/Gabrielferreiraav/Movie_Recommendation_System
    cd sistema-recomendacao-filmes
    ```
 
